@@ -13,6 +13,8 @@ export default function Post() {
     const userData = useSelector((state) => state.auth.userData);
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
+     console.log("Post Author ID:", isAuthor);
+    console.log("Logged-in User Data:", userData);
 
     useEffect(() => {
         if (slug) {
@@ -35,30 +37,30 @@ export default function Post() {
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2 text-white">
                     <img
                         src={appwriteService.getFilePreview(post.FeaturedImg)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl text-white"
                     />
 
                     {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                        <div className="absolute right-6 top-6 text-white">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
+                                <Button  className="mr-3 bg-amber-50 text-white cursor-pointer relative">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
+                            <Button bgColor="bg-red-500" className="text-white cursor-pointer relative bg-yellow-300" onClick={deletePost}>
                                 Delete
                             </Button>
                         </div>
                     )}
                 </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                <div className="w-full mb-6 text-white">
+                    <h1 className="text-2xl font-bold text-white">{post.title}</h1>
                 </div>
-                <div className="browser-css">
+                <div className="browser-css text-white">
                      {post.content ? parse(post.content) : null}
                     </div>
             </Container>
