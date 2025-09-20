@@ -21,7 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <AuthLayout authentication>
+          {" "}
+          <Home />
+        </AuthLayout>
       },
       {
         path: '/login',
@@ -49,8 +52,8 @@ const router = createBrowserRouter([
         )
       },
       {
-        path:'/add-Post',
-        element:(
+        path: '/add-Post',
+        element: (
           <AuthLayout authentication>
             {" "}
             <AddPost />
@@ -58,8 +61,8 @@ const router = createBrowserRouter([
         )
       },
       {
-        path:'/edit-post/:slug',
-        element:(
+        path: '/edit-post/:slug',
+        element: (
           <AuthLayout authentication>
             {" "}
             <EditPosts />
@@ -68,8 +71,8 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'/post/:slug',
-        element:<Post/>,
+        path: '/post/:slug',
+        element: <Post />,
       }
     ],
   },
@@ -78,13 +81,13 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render
-(
-  <React.StrictMode>
-    <Provider store={store}>
-    <RouterProvider router={router}/>
-    </Provider>
-  </React.StrictMode>,
-)
+  (
+    <React.StrictMode>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </React.StrictMode>,
+  )
 
 // import React from 'react'
 // import ReactDOM from 'react-dom/client'

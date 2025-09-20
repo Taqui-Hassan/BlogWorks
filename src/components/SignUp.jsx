@@ -29,14 +29,10 @@ function SignUp() {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10">
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
-          </span>
-        </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
+    <div className="flex items-center justify-center w-full p-15">
+      <div className="w-full max-w-md bg-white rounded-xl p-6 border border-black/10">
+        
+        <h2 className="text-center text-sm font-bold leading-tight text-black">Sign up to create account</h2>
         <p className="mt-2 text-center text-base text-black/60">
           Already have an account?{' '}
           <Link
@@ -46,20 +42,23 @@ function SignUp() {
             Sign In
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {error && <p className="text-red-600 mt-8 text-center text-xs">{error}</p>}
 
-        <form onSubmit={handleSubmit(create)}>
-          <div className="space-y-5">
+        <form className='text-sm text-black mt-8 m-8' onSubmit={handleSubmit(create)}>
+          <div className=" text-sm space-y-5">
             <Input
-              label="Full Name: "
+              //label="Full Name: "
               placeholder="Enter your full name"
+              className='w-full rounded-md text-sm'
+              
               {...register("name", {
                 required: true,
               })}
             />
             <Input
-              label="Email: "
+             // label="Email: "
               placeholder="Enter your email"
+              className='w-full rounded-md border border-gray-300 p-2'
               type="email"
               {...register("email", {
                 required: true,
@@ -71,8 +70,9 @@ function SignUp() {
               })}
             />
             <Input
-              label="Password: "
+              // label="Password: "
               type="password"
+              className='w-full rounded-md border border-gray-300 p-2'
               placeholder="Enter your password"
               {...register("password", {
                 required: true,

@@ -11,8 +11,8 @@ import { useForm } from 'react-hook-form'
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { register, handleSubmit } = useForm();
     const [error, setError] = useState("")
+    const { register, handleSubmit ,formState:{errors}} = useForm();
 
     const login = async (data) => {
         setError('')
@@ -23,6 +23,9 @@ function Login() {
                 if (userData) dispatch(authLogin(userData))
                 navigate("/")
             }
+            // if(data=""){
+            //     {error && <p className='text-red-600 mt-8'>{error}</p>}
+            // }
 
         } catch (error) {
             setError(error.message)
@@ -30,14 +33,11 @@ function Login() {
     }
 
     return (
-        <div className='flex items-center justify-center w-full'>
-            <div className='mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10'>
-                <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
-                </div>
-                <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
+        <div className="flex items-center justify-center w-full p-23">
+      <div className="w-full max-w-md bg-white rounded-xl p-10 border border-black/10">
+        
+                
+                <h2 className="text-center text-sm font-bold leading-tight text-black">Sign in to your account</h2>
                 <p className="mt-2 text-center text-base text-black/60">
                     Don&apos;t have any account?&nbsp;
                     <Link
@@ -47,11 +47,15 @@ function Login() {
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className='text-red-600 mt-8'>{error}</p>}
+                {error && <p className='text-red-600 mt-8 text-xs'>{error}</p>}
+
+
+                
                 <form onSubmit={handleSubmit(login)} className='mt-8'>
-                    <div className='space-y-5'>
-                        <Input label="Email:"
+                    <div className='space-y-5 text-sm text-black'>
+                        <Input //label="Email:"
                             placeholder='Enter your email'
+                            className='w-full rounded-4xl border border-gray-300 p-2'
                             type='email'
                             {...register("email", {
                                 required: true,
@@ -65,14 +69,21 @@ function Login() {
                             })}
 
                         />
-                        <Input label='Password'
+                        {errors.email && (
+    <p className="text-red-600 mt-1 text-sm">{errors.email.message}</p>
+)}
+                        <Input //label='Password'
                             type='password'
+                            className='w-full rounded-md border border-gray-300 p-2'
                             placeholder='Enter your password'
                             {
                             ...register('password', {
-                                required: true,
+                                required: "Password is required",
                             })
                             } />
+                             {errors.password && (
+    <p className="text-red-600 mt-1 text-sm">{errors.password.message}</p>
+)}
                         <Button
                             type="submit"
                             className="w-full cursor-pointer"

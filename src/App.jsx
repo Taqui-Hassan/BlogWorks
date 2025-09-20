@@ -6,7 +6,8 @@ import { login, logout } from "./store/authSlice"
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Outlet } from 'react-router-dom';
-import Home from './pages/Home';
+
+import './App.css'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,16 +28,16 @@ function App() {
 
 
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap
-    bg-gray-600 
-    '>
-      <div className='w-full block'>
+    <div className='min-h-screen flex flex-wrap bg-center bg-no-repeat  bg-cover bg-[url("./bgimage.webp'>
+      <div className='w-full block")]'>
         <Header/>
           
-        <main className='bg-black'>
+        <main className='text-center text-4xl text-white flex-row
+        justify-center items-center p-2 '>
+          
           <Outlet/>
         </main>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </div>
   ) : null

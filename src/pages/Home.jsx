@@ -15,13 +15,13 @@ function Home() {
   
     if (posts.length === 0) {
         return (
-            <div className="w-full py-16 mt-4 text-center bg-black">
+            <div className="w-full py-16 mt-4 text-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold cursor-pointer text-white ">
+                            <h1 className=" font-bold cursor-pointer text-black text-4xl ">
                                 <Link to='/login'>
-                                    Login to read posts
+                                    
                                 </Link>
                             </h1>
                         </div>
