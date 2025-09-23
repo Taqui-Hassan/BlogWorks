@@ -1,7 +1,7 @@
 import React from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 import { Controller } from 'react-hook-form';
-
+import conf from '../conf/conf.js'
 
 export default function RTE({ name, control, label, defaultValue = "",theme='dark' }) {
   return (
@@ -14,7 +14,7 @@ export default function RTE({ name, control, label, defaultValue = "",theme='dar
         render={({ field: { onChange } }) => (
           <Editor
             key={theme}
-            apiKey='8c6s0pd80jdd400igw1am2xhb9ciqcxkqvytmdpj1j172phq'
+            apiKey={conf.tinymceId}
             initialValue={defaultValue}
             init={{
               selector: 'textarea',
