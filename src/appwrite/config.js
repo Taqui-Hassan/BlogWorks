@@ -79,8 +79,8 @@ export class Service {
     async deletePost(slug) {
         try {
             await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                conf.appwriteProjectId,
                 slug,
 
             )
@@ -156,7 +156,7 @@ export class Service {
         console.log("File ID:", fileId);
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
-            fileId,
+            fileId
         );
     }
 }

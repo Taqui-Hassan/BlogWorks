@@ -1,4 +1,4 @@
-import React, { useCallback,useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "../index";
 import appwriteService from "../../appwrite/config";
@@ -13,9 +13,9 @@ export default function PostForm({ post }) {
             Content: post?.Content || "",
             status: post?.status || "active",
         },
-    
+
     });
-    
+
     //button to switch colors
     const [editorTheme, setEditorTheme] = useState('dark');
     const toggleEditorTheme = () => {
@@ -36,7 +36,7 @@ export default function PostForm({ post }) {
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
-                ...data,
+                ...data,    
                 FeaturedImg: file ? file.$id : undefined,
             });
 
@@ -66,22 +66,12 @@ export default function PostForm({ post }) {
                     console.log("Image is required to create a post.");
                 }
             }
-            // const file = await appwriteService.uploadFile(data.image[0]);
+            else {
 
-            // if (file) {
-            //     const uploadFile= await appwriteService.uploadFile(file);
-
-            //     if(uploadFile){
-
-            //         const fileId = file.$id;
-            //         data.featuredImage = fileId;
-            //         const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
-
-            //         if (dbPost) {
-            //             navigate(`/post/${dbPost.$id}`);
-            //         }
-            //     }
-            // }
+                alert("Please select a featured image to create a new post.");
+                return; 
+            }
+            
 
         }
     };
@@ -110,9 +100,9 @@ export default function PostForm({ post }) {
     return (
         <form onSubmit={handleSubmit(submit)}>
             <div className='flex justify-end mb-4'>
-               
-                <Button 
-                    type="button" 
+
+                <Button
+                    type="button"
                     onClick={toggleEditorTheme}
                     className="bg-gray-500 text-sm cursor-pointer"
                 >
@@ -162,7 +152,7 @@ export default function PostForm({ post }) {
                             className="mb-4 text-sm w-1.5"
                             {...register("status", { required: true })}
                         />
-                        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className=''>
+                        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className='cursor-pointer'>
                             {post ? "Update" : "Submit"}
                         </Button>
                     </div>
