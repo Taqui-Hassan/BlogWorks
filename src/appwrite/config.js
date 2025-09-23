@@ -156,7 +156,7 @@ export class Service {
         console.log("File ID:", fileId);
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
-            fileId
+            fileId,
         );
     }
 }

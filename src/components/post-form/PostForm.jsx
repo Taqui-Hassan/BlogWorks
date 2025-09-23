@@ -36,7 +36,7 @@ export default function PostForm({ post }) {
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
-                ...data,    
+                ...data,
                 FeaturedImg: file ? file.$id : undefined,
             });
 
@@ -66,12 +66,23 @@ export default function PostForm({ post }) {
                     console.log("Image is required to create a post.");
                 }
             }
-            else {
-
-                alert("Please select a featured image to create a new post.");
-                return; 
-            }
             
+            // const file = await appwriteService.uploadFile(data.image[0]);
+
+            // if (file) {
+            //     const uploadFile= await appwriteService.uploadFile(file);
+
+            //     if(uploadFile){
+
+            //         const fileId = file.$id;
+            //         data.featuredImage = fileId;
+            //         const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+
+            //         if (dbPost) {
+            //             navigate(`/post/${dbPost.$id}`);
+            //         }
+            //     }
+            // }
 
         }
     };
