@@ -16,7 +16,7 @@ export default function RTE({ name, control, label, defaultValue = "",theme='dar
         render={({ field: { onChange } }) => (
           <Editor
             key={theme}
-            apiKey='1im9por7b7fhgprawuqwi55twwie89c5hzsy887cvtmfdx0n'
+            apiKey={conf.tinymceId}
             initialValue={defaultValue}
             init={{
               selector: 'textarea',
