@@ -30,18 +30,10 @@ function SignUp() {
 
   return (
     <div className="flex items-center justify-center w-full p-15">
-      <div className="w-full max-w-md bg-white rounded-xl p-6 border border-black/10">
+      <div className="w-full max-w-md  p-6">
         
-        <h2 className="text-center text-sm font-bold leading-tight text-black">Sign up to create account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
-          Already have an account?{' '}
-          <Link
-            to="/login"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
-          >
-            Sign In
-          </Link>
-        </p>
+        {/* <h2 className="text-center text-sm font-bold leading-tight text-black">Sign up to create account</h2> */}
+        
         {error && <p className="text-red-600 mt-8 text-center text-xs">{error}</p>}
 
         <form className='text-sm text-black mt-8 m-8' onSubmit={handleSubmit(create)}>
@@ -83,6 +75,15 @@ function SignUp() {
             </Button>
           </div>
         </form>
+        <p className="mt-2 text-center text-base text-black/60">
+          Already have an account?{' '}
+          <Link
+            to="/login"
+            className="font-medium text-primary transition-all duration-200 hover:underline"
+          >
+            Sign In
+          </Link>
+        </p>
       </div>
     </div>
   );

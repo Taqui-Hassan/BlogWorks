@@ -19,10 +19,10 @@ function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className=" font-bold cursor-pointer text-black text-4xl ">
-                                <Link to='/login'>
-                                    
-                                </Link>
+                            <h1 className=" font-bold text-black text-sm ">
+                                
+                                    Welcome to BlogWorks Your words, polished to perfection.Whether you’re a blogger, content creator, or business owner, your words deserve to shine. At BlogWorks, we help you edit, refine, and transform your blog posts into engaging, professional content that connects with your readers.
+                                
                             </h1>
                         </div>
                     </div>

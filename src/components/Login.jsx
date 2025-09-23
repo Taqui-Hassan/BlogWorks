@@ -12,7 +12,7 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [error, setError] = useState("")
-    const { register, handleSubmit ,formState:{errors}} = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const login = async (data) => {
         setError('')
@@ -34,28 +34,22 @@ function Login() {
 
     return (
         <div className="flex items-center justify-center w-full p-23">
-      <div className="w-full max-w-md bg-white rounded-xl p-10 border border-black/10">
-        
-                
-                <h2 className="text-center text-sm font-bold leading-tight text-black">Sign in to your account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
-                    Don&apos;t have any account?&nbsp;
-                    <Link
-                        to="/SignUp"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
-                    >
-                        Sign Up
-                    </Link>
-                </p>
+            <div className="w-full max-w-md  p-10">
+
+
+                {/* <h2 className="text-center text-sm font-bold leading-tight text-black">Sign in to your account</h2> */}
+
                 {error && <p className='text-red-600 mt-8 text-xs'>{error}</p>}
 
+                <div className='text-amber-950 font-bold font-mono'>BLOG IN! </div>
 
-                
                 <form onSubmit={handleSubmit(login)} className='mt-8'>
                     <div className='space-y-5 text-sm text-black'>
                         <Input //label="Email:"
                             placeholder='Enter your email'
-                            className='w-full rounded-4xl border border-gray-300 p-2'
+                            className={`p-2 rounded border placeholder-amber-400 bg-gray-200  placeholder-shown:bg-amber-900  focus:bg-white 
+                           `}
+                            // className='w-full p-2 placeholder-gray-500 placeholder-bg-blue  '
                             type='email'
                             {...register("email", {
                                 required: true,
@@ -70,27 +64,36 @@ function Login() {
 
                         />
                         {errors.email && (
-    <p className="text-red-600 mt-1 text-sm">{errors.email.message}</p>
-)}
+                            <p className="text-red-600 mt-1 text-sm">{errors.email.message}</p>
+                        )}
                         <Input //label='Password'
                             type='password'
-                            className='w-full rounded-md border border-gray-300 p-2'
+                            className='p-2 rounded border bg-gray-200 placeholder-amber-400  placeholder-shown:bg-amber-900  focus:bg-white '
                             placeholder='Enter your password'
                             {
                             ...register('password', {
                                 required: "Password is required",
                             })
                             } />
-                             {errors.password && (
-    <p className="text-red-600 mt-1 text-sm">{errors.password.message}</p>
-)}
+                        {errors.password && (
+                            <p className="text-red-600 mt-1 text-sm">{errors.password.message}</p>
+                        )}
                         <Button
                             type="submit"
-                            className="w-full cursor-pointer"
-                        >Sign in</Button>
+                            className=" cursor-pointer "
+                        >Log Me IN!</Button>
                     </div>
 
                 </form>
+                <p className="mt-2 text-center text-base text-black/60">
+                    Don&apos;t have any account?&nbsp;
+                    <Link
+                        to="/SignUp"
+                        className="font-medium text-primary transition-all duration-200 hover:underline"
+                    >
+                        Sign Up
+                    </Link>
+                </p>
             </div>
         </div>
     )
