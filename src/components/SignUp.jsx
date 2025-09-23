@@ -40,8 +40,8 @@ function SignUp() {
           <div className=" text-sm space-y-5">
             <Input
               //label="Full Name: "
-              placeholder="Enter your full name"
-              className='w-full rounded-md text-sm'
+              placeholder="USERNAME"
+              className='w-full rounded-md text-sm  placeholder-shown:bg-loginColor'
               
               {...register("name", {
                 required: true,
@@ -49,8 +49,8 @@ function SignUp() {
             />
             <Input
              // label="Email: "
-              placeholder="Enter your email"
-              className='w-full rounded-md border border-gray-300 p-2'
+              placeholder="EMAIL"
+              className='w-full rounded-md border border-gray-300 p-2  placeholder-shown:bg-loginColor'
               type="email"
               {...register("email", {
                 required: true,
@@ -64,8 +64,8 @@ function SignUp() {
             <Input
               // label="Password: "
               type="password"
-              className='w-full rounded-md border border-gray-300 p-2'
-              placeholder="Enter your password"
+              className='w-full rounded-md border border-gray-300 p-2  placeholder-shown:bg-loginColor'
+              placeholder="PASSWORD"
               {...register("password", {
                 required: true,
               })}

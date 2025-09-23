@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@theme{
+     --color-loginColor : rgb(250 246 230);
+     --color-textColor : rgb(108 106 103);
+     --color-colorOrange: #FE7F2D;
+     --color-colorBlue: #233d4d;
+}
+body{
+     margin:0;
+}

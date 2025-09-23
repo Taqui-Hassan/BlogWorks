@@ -3,8 +3,8 @@ import React from 'react'
 function Button(
     {children,
     type='button',
-    bgColor='bg-amber-900',
-    textColor='text-white',
+    bgColor='bg-loginColor',
+    textColor='text-textColor',
     className='',
     ...props}
 ) {

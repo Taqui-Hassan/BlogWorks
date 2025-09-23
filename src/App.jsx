@@ -30,7 +30,7 @@ function App() {
   return !loading ? (
     <div className='min-h-screen flex flex-wrap'>
       <div className='w-full block")]'>
-        {/* <Header/> */}
+        <Header/>
           
         <main className='text-center text-4xl text-white flex-row
         justify-center items-center p-2 '>

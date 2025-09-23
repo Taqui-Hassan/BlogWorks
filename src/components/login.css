@@ -1,0 +1,72 @@
+/* Define the keyframes for the sliding animation */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%); /* Start completely off-screen to the left */
+  }
+  100% {
+    transform: translateX(0);    /* End at its natural position (0 translation) */
+  }
+}
+
+/* Apply the animation to the 'slide-in-left' class */
+.slide-in-left {
+  animation: slideInFromLeft 0.4s ease-out forwards; /* 0.7s duration, ease-out timing, keep final state */
+}
+/* --- Add these new styles --- */
+
+/* Keyframes for the left div sliding OUT */
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Keyframes for the right div growing to full width */
+@keyframes growToFullScreen {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes for content fading OUT */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Keyframes for new content fading IN */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* --- Animation Classes --- */
+
+/* Class to apply the slide-out animation */
+.slide-out-left {
+  animation: slideOutToLeft 0.7s ease-in forwards;
+}
+
+/* Class to apply the grow animation */
+.grow-to-full {
+  animation: growToFullScreen 0.7s ease-in forwards;
+}
+
+/* Class for the login form to fade out */
+.fade-out-content {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+/* Class for the new home content to fade in */
+.fade-in-content {
+  /* Start the fade-in slightly after the other animations begin */
+  animation: fadeIn 0.5s ease-in forwards 0.5s;
+  opacity: 0; /* Start as invisible until animation begins */
+}

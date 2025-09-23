@@ -2,11 +2,16 @@ import React from 'react'
 import { Container, Logo, LogoutBtn } from '../index'
 import { useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
+import authService from '../../appwrite/auth'
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate();
 
+
+  if(!authStatus){
+    return null;
+  }
   const navItems = [
     { name: 'Home', slug: '/', active: authStatus },
     // { name: "Login", slug: "/login", active: !authStatus },
@@ -14,9 +19,10 @@ function Header() {
     { name: "All Posts", slug: "/all-posts", active: authStatus },
     { name: "Add Post", slug: "/add-Post", active: authStatus },
   ]
+  
 
   return (
-    <header className='py-3 shadow bg-white border '>
+    <header className='py-3 shadow bg-colorOrange '>
       <Container>
         <nav className="flex items-center justify-center">
           {/* <div className='mr-7'>
