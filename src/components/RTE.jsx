@@ -4,17 +4,19 @@ import { Controller } from 'react-hook-form';
 import conf from '../conf/conf.js'
 
 export default function RTE({ name, control, label, defaultValue = "",theme='dark' }) {
+  
   return (
     <div className='w-full'>
       {label && <label className='inline-block mb-1 pl-1'>{label}</label>}
 
+      {/* console.log(apiKey); */}
       <Controller
         name={name || "content"}
         control={control}
         render={({ field: { onChange } }) => (
           <Editor
             key={theme}
-            apiKey={conf.tinymceId}
+            apiKey='1im9por7b7fhgprawuqwi55twwie89c5hzsy887cvtmfdx0n'
             initialValue={defaultValue}
             init={{
               selector: 'textarea',
@@ -52,7 +54,9 @@ export default function RTE({ name, control, label, defaultValue = "",theme='dar
             onEditorChange={onChange}
           />
         )}
+        
       />
+      
 
     </div>
   )
