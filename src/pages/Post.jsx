@@ -37,22 +37,22 @@ export default function Post() {
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border p-2 text-black">
-                    {console.log("Featured Image ID being used:", post.featuredImg)}
+                <div className="w-full flex justify-center mb-4 relative p-2 text-black">
+                    {/* {console.log("Featured Image ID being used:", post.featuredImg)}
                     <img
                         src={appwriteService.getFilePreview(post.FeaturedImg)}
                         alt={post.title}
                         className="rounded-xl text-black font-bold"
-                    />
+                    /> */}
 
                     {isAuthor && (
                         <div className="absolute right-6 top-6 ">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button  className="mr-3 bg-amber-50 cursor-pointer">
+                                <Button  className="text-xs mr-3 bg-loginColor cursor-pointer">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button className="bg-red-500 cursor-pointer" onClick={deletePost}>
+                            <Button className="text-xs bg-red-500 cursor-pointer" onClick={deletePost}>
                                 Delete
                             </Button>
                         </div>

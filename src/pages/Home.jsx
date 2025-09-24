@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import appwriteService from "../appwrite/config";
-import {Container, PostCard} from '../components'
+import { Button, Container, PostCard } from '../components'
 import { Link } from 'react-router-dom';
 function Home() {
     const [posts, setPosts] = useState([])
@@ -12,30 +12,36 @@ function Home() {
             }
         })
     }, [])
-  
+
     if (posts.length === 0) {
         return (
-            <div className="w-full py-16 mt-4 text-center">
-                <Container>
-                    <div className="flex flex-wrap bg-colorBlue">
-                        <div className="p-2 w-full">
-                            <h1 className=" font-bold text-black text-sm ">
-                                
-                                    Welcome to BlogWorks Your words, polished to perfection.Whether you’re a blogger, content creator, or business owner, your words deserve to shine. At BlogWorks, we help you edit, refine, and transform your blog posts into engaging, professional content that connects with your readers.
-                                
-                            </h1>
+            <div className='min-h-screen bg-white'>
+
+
+
+                <div className="w-full text-center bg-white">
+                    
+                        <div className="bg-colorBlue p-5">
+                            
+                                <h1 className=" font-bold text-white">
+
+                                    Welcome to BlogWorks !!!
+
+                                </h1>
+                                <div className='text-white text-sm'>
+                                    You have the ideas, the passion, and the expertise. We provide the tools and insights to transform them into powerful, professional content. Whether you're a seasoned blogger, a content marketer, or just starting your writing journey, BlogWorks is your partner in crafting posts that captivate, connect, and convert.
+                                </div>
+                                <Link to='/add-post'>
+                                    <button className='duration-100 hover:bg-blue-200 cursor-pointer text-xs rounded-2xl p-2 bg-colorOrange'
+                                    >Click Here to Create your Blog</button>
+
+                                </Link>
+
+
                         </div>
-                    </div>
-                    <div className="flex flex-wrap bg-colorBlue">
-                        <div className="p-2 w-full">
-                            <h1 className=" font-bold text-black text-sm ">
-                                
-                                    Welcome to BlogWorks Your words, polished to perfection.Whether you’re a blogger, content creator, or business owner, your words deserve to shine. At BlogWorks, we help you edit, refine, and transform your blog posts into engaging, professional content that connects with your readers.
-                                
-                            </h1>
-                        </div>
-                    </div>
-                </Container>
+
+                    
+                </div>
             </div>
         )
     }
