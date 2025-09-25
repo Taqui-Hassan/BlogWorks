@@ -46,32 +46,59 @@ function Home() {
                 </div>
 
                 <div className='flex flex-wrap gap-2 pl-2 pb-2'>
-                    <CardBox className='text-black' para="Why Learning JavaScript Can Change Your Career Path">
-
-                    </CardBox>
-                    <CardBox className='text-black' para='10 Simple Habits That Boost Productivity Every Day'>
-
-                    </CardBox>
-                    <CardBox className='text-black' para='The Rise of Remote Work: Pros and Cons You Should Know'>
-
-                    </CardBox>
-                    <CardBox className='text-black' para='How Artificial Intelligence Is Shaping Our Future'>
-
-                    </CardBox>
-                    <CardBox className='text-black' para='Beginner’s Guide to Building a Personal Portfolio Website'>
-
-                    </CardBox>
-                    <CardBox className='text-black' para='Exploring the Future of Space Tourism'>
-
-                    </CardBox>
                     <Link to='/all-posts'>
+                        <CardBox className='text-black' para="Why Learning JavaScript Can Change Your Career Path">
+
+                        </CardBox>
+
+                    </Link>
+
+
+                    <Link to='/all-posts'>
+
+                        <CardBox className='text-black' para='10 Simple Habits That Boost Productivity Every Day'>
+                        </CardBox>
+                    </Link>
+
+                    <Link to='/all-posts'>
+
+                        <CardBox className='text-black' para='The Rise of Remote Work: Pros and Cons You Should Know'>
+                        </CardBox>
+                    </Link>
+
+
+                    <Link to='/all-posts'>
+
+                        <CardBox className='text-black' para='How Artificial Intelligence Is Shaping Our Future'>
+                        </CardBox>
+                    </Link>
+
+                    <Link to='/all-posts'>
+
+                        <CardBox className='text-black' para='Beginner’s Guide to Building a Personal Portfolio Website'>
+                        </CardBox>
+                    </Link>
+
+                    <Link to='/all-posts'>
+
+                        <CardBox className='text-black' para='Exploring the Future of Space Tourism'>
+                        </CardBox>
+                    </Link>
+                    <Link to={"/post/" + "SAMSUNG GALAXY S24FE 5G".split(" ").join("-")}>
                         <CardBox className='text-black' para='SAMSUNG GALAXY S24FE 5G'>
 
                         </CardBox>
 
                     </Link>
+                    <Link to='/all-posts'>
+
+                        <button className='text-blue-300 text-xs p-2 mt-3 bg-colorBlue rounded-3xl m-0'>
+                            For More Posts Click here..
+                        </button>
+
+                    </Link>
                 </div>
-            </div>
+            </div >
         )
     }
 
