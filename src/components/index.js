@@ -12,6 +12,7 @@ import PostCard from './PostCard'
 import RTE from './RTE'
 import Select from './Select'
 import SignUp from './SignUp'
+import CardBox from "./CardBox/CardBox";
 
 
 export {
@@ -29,6 +30,7 @@ export {
     RTE,
     Select,
     SignUp,
+    CardBox,
 
 }
 

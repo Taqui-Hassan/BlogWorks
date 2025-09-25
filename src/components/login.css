@@ -1,20 +1,20 @@
-/* Define the keyframes for the sliding animation */
+
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-100%); /* Start completely off-screen to the left */
+    transform: translateX(-100%); 
   }
   100% {
-    transform: translateX(0);    /* End at its natural position (0 translation) */
+    transform: translateX(0);   
   }
 }
 
-/* Apply the animation to the 'slide-in-left' class */
-.slide-in-left {
-  animation: slideInFromLeft 0.4s ease-out forwards; /* 0.7s duration, ease-out timing, keep final state */
-}
-/* --- Add these new styles --- */
 
-/* Keyframes for the left div sliding OUT */
+.slide-in-left {
+  animation: slideInFromLeft 0.4s ease-out forwards; 
+}
+
+
+
 @keyframes slideOutToLeft {
   from {
     transform: translateX(0);

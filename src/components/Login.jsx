@@ -36,7 +36,7 @@ function Login() {
                 setError(error.message)
                 setIsLoggingIn(false)
             }
-        },500)
+        })
     }
 
     return (
