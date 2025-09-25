@@ -81,7 +81,7 @@ function Login() {
                             )}
                             <Input //label='Password'
                                 type='password'
-                                className='font-bold p-2 rounded border bg-gray-200 placeholder-textColor  placeholder-shown:bg-colorOrange focus:bg-white '
+                                className='font-bold p-2 rounded border bg-gray-200 placeholder-shown:bg-loginColor  focus:bg-white '
                                 placeholder='PASSWORD'
                                 {
                                 ...register('password', {
@@ -91,10 +91,10 @@ function Login() {
                             {errors.password && (
                                 <p className="text-red-600 mt-1 text-sm">{errors.password.message}</p>
                             )}
-                            <Button
+                            <button
                                 type="submit"
-                                className=" cursor-pointer "
-                            >Log Me IN!</Button>
+                                className="bg-colorOrange text-white text-bold cursor-pointer p-2 rounded-3xl hover:bg-black"
+                            >Log Me IN!</button>
                         </div>
 
                     </form>
