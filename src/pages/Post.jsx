@@ -35,7 +35,7 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="min-h-screen bg-[url('/public/HomeBg.webp')]">
             <Container>
                 <div className="w-full flex justify-center mb-4 relative p-2 text-black">
                     {/* {console.log("Featured Image ID being used:", post.featuredImg)}
@@ -58,10 +58,10 @@ export default function Post() {
                         </div>
                     )}
                 </div>
-                <div className="w-full mb-6 text-white">
-                    <h1 className="text-sm font-bold text-white">{post.title}</h1>
+                <div className="w-full mb-6 text-black">
+                    <h1 className="text-sm font-bold text-black">{post.title}</h1>
                 </div>
-                <div className="browser-css text-white text-sm">
+                <div className="browser-css text-black text-sm">
                      {post.Content ? parse(post.Content) : null}
                     </div>
             </Container>

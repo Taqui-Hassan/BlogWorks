@@ -15,11 +15,11 @@ function AllPosts() {
 
     }, [])
   return (
-    <div className='w-full py-8 text-white'>
+    <div className="w-full min-h-screen text-news bg-[url('/public/HomeBg.webp')]">
         <Container>
-            <div className='flex flex-wrap text-white'>
+            <div className='flex flex-wrap text-news'>
                 {posts.map((post) => (
-                    <div key={post.$id} className='p-2 w-1/4 text-white'>
+                    <div key={post.$id} className='p-2 w-1/4 text-news'>
                         <PostCard {...post} />
                     </div>
                 ))}

@@ -140,7 +140,7 @@ export default function PostForm({ post }) {
                             }}
                         />
                     </div>
-                    <div className="text-sm">
+                    <div className="text-sm text-news pt-8">
                         <Input
                             label="Featured Image :"
                             type="file"
@@ -160,7 +160,7 @@ export default function PostForm({ post }) {
                         <Select
                             options={["active", "inactive"]}
                             label="Status"
-                            className="mb-4 text-sm w-1.5"
+                            className="mb-4 text-news text-sm w-2"
                             {...register("status", { required: true })}
                         />
                         <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className='cursor-pointer'>

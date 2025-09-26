@@ -40,13 +40,13 @@ function Login() {
     }
 
     return (
-        <div className='flex overflow-hidden'>
+        <div className=''>
 
 
-            <div className={`pb-0 w-full bg-white ${isLoggingIn?'slide-out-left' :'slide-in-left'}`}>
+            {/* <div className={`pb-0 w-full bg-white ${isLoggingIn?'slide-out-left' :'slide-in-left'}`}>
                             
-            </div>
-            <div className="flex flex-col justify-center  items-center p-100 pt-83 bg-colorBlue h-screen ">
+            </div> */}
+            <div className="h-[585px] flex justify-center items-center bg-[url('/public/bgHome.webp')]">
                 <div className="w-full">
 
 
@@ -54,7 +54,7 @@ function Login() {
 
                     {error && <p className='text-red-600 mt-15 text-xs'>{error}</p>}
 
-                    <div className='text-loginColor font-bold font-mono text-3xl'>BLOG IN! </div>
+                    <div className='text-black font-satoshi font-mono text-7xl'>BLOG IN! </div>
 
                     <form onSubmit={handleSubmit(login)} className='mt-8'>
                         <div className='space-y-5 text-sm text-black'>
@@ -93,12 +93,12 @@ function Login() {
                             )}
                             <button
                                 type="submit"
-                                className="bg-colorOrange text-white text-bold cursor-pointer p-2 rounded-3xl hover:bg-black"
+                                className="bg-black text-news text-bold cursor-pointer p-2 rounded-3xl hover:bg-white"
                             >Log Me IN!</button>
                         </div>
 
                     </form>
-                    <p className="mt-2 text-center text-base text-black/60">
+                    <p className="mt-2 text-center text-xl font-bold text-black">
                         Don&apos;t have any account?&nbsp;
                         <Link
                             to="/SignUp"

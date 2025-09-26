@@ -35,19 +35,17 @@ function SignUp() {
   };
 
   return (
-    <div className='flex overflow-hidden'>
-      <div className={`w-full pt-2 h-screen bg-white ${isLoggingIn ? 'slide-out-left' : 'slide-in-left'}`}>
-
-      </div>
-      <div className="flex flex-col justify-center  items-center p-100 pt-50 bg-colorBlue h-screen">
+    <div className=''>
+      <div className="h-[585px] flex justify-center items-center bg-[url('/public/bgHome.webp')]">
         <div className="w-full ">
 
           {/* <h2 className="text-center text-sm font-bold leading-tight text-black">Sign up to create account</h2> */}
 
-          {error && <p className="text-red-600 mt-8 text-center text-xs">{error}</p>}
-          {successMessage && <p className="text-colorOrange mt-8 text-center text-sm">{successMessage}</p>}
+          {error && <p className="text-black mt-8 text-center text-xs">{error}</p>}
+          {successMessage && <p className="text-black font-bold mt-8 text-center text-xl">{successMessage}</p>}
 
           <form className='text-sm text-black mt-8 m-8' onSubmit={handleSubmit(create)}>
+            <div className='pl-20 pb-2 text-black font-satoshi font-mono text-7xl mb-2'>Start Your Chapter... </div>
             <div className=" text-sm space-y-5">
               <Input
                 //label="Full Name: "
@@ -81,12 +79,12 @@ function SignUp() {
                   required: true,
                 })}
               />
-              <button type="submit" className="bg-colorOrange text-white text-bold cursor-pointer p-2 rounded-3xl hover:bg-black">
+              <button type="submit" className="bg-black text-news text-bold cursor-pointer p-2 rounded-3xl hover:bg-white">
                 Create Account
               </button>
             </div>
           </form>
-          <p className="mt-2 text-center text-base text-white/60">
+          <p className="mt-2 font-bold text-center text-xl text-black">
             Already have an account?{' '}
             <Link
               to="/login"
