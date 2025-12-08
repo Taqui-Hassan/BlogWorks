@@ -44,13 +44,13 @@ function Home() {
         )
     }
     return (
-        <div className="min-h-screen bg-repeat-x bg-[url('/public/HomeBg.webp')]">
+        <div className="min-h-screen bg-repeat-x bg-[url('/HomeBg.webp')]">
 
 
 
             <div className="w-full text-center  ">
 
-                <div className="bg-[url('/public/HomeBg.webp')] p-5">
+                <div className="bg-[url('/HomeBg.webp')] p-5">
 
                     <h1 className="font-satoshi font-bold text-black">
 

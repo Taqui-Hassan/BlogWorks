@@ -20,7 +20,7 @@ function EditPost() {
         }
     }, [slug, navigate])
   return post ? (
-    <div className="bg-[url('/public/HomeBg.webp')]">
+    <div className="bg-[url('/HomeBg.webp')]">
         <Container>
             <PostForm post={post} />
         </Container>

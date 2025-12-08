@@ -36,10 +36,10 @@ function SignUp() {
 
   return (
     <div className=''>
-      <div className="h-[585px] flex justify-center items-center bg-[url('/public/bgHome.webp')]">
+      <div className="h-[585px] flex justify-center items-center bg-[url('/bgHome.webp')]">
         <div className="w-full ">
 
-          {/* <h2 className="text-center text-sm font-bold leading-tight text-black">Sign up to create account</h2> */}
+          
 
           {error && <p className="text-black mt-8 text-center text-xs">{error}</p>}
           {successMessage && <p className="text-black font-bold mt-8 text-center text-xl">{successMessage}</p>}

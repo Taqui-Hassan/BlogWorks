@@ -15,7 +15,7 @@ function AllPosts() {
 
     }, [])
   return (
-    <div className="w-full min-h-screen text-news bg-[url('/public/HomeBg.webp')]">
+    <div className="w-full min-h-screen text-news bg-[url('/HomeBg.webp')]">
         <Container>
             <div className='flex flex-wrap text-news'>
                 {posts.map((post) => (

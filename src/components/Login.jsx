@@ -46,7 +46,7 @@ function Login() {
             {/* <div className={`pb-0 w-full bg-white ${isLoggingIn?'slide-out-left' :'slide-in-left'}`}>
                             
             </div> */}
-            <div className="h-[585px] flex justify-center items-center bg-[url('/public/bgHome.webp')]">
+            <div className="h-[100vh] sm:h-[585px] h-min-screen flex justify-center items-center bg-[url('/bgHome.webp')]">
                 <div className="w-full">
 
 

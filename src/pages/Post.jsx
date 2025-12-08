@@ -9,21 +9,30 @@ export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
-
+    const [isLoading, setIsLoading] = useState(true);
     const userData = useSelector((state) => state.auth.userData);
-
-    const isAuthor = post && userData ? post.UserId === userData.$id : false;
+    const [isAuthor, setIsAuthor] = useState(false);
+   
     console.log("Post Author ID:", isAuthor);
     console.log("Logged-in User Data:", userData);
 
     useEffect(() => {
         if (slug) {
-            appwriteService.getPost(slug).then((post) => {
-                if (post) setPost(post);
+            appwriteService.getPost(slug).then((postData) => {
+                if (postData) setPost(postData);
                 else navigate("/");
             });
         } else navigate("/");
     }, [slug, navigate]);
+    useEffect(() => {
+        if (post && userData) {
+            setIsAuthor(post.UserId === userData.$id);
+            setIsLoading(false);
+        } else if(post){
+            setIsLoading(false);
+        }
+        // setIsAuthor(false);
+    }, [post, userData]);
 
     const deletePost = () => {
         appwriteService.deletePost(post.$id).then((status) => {
@@ -33,9 +42,17 @@ export default function Post() {
             }
         });
     };
+    if (isLoading) {
+        return (
+            <div className="py-8 min-h-screen flex items-center justify-center">
+                <h1 className="text-2xl font-bold">Loading...</h1>
+                
+            </div>
+        );
+    }
 
     return post ? (
-        <div className="min-h-screen bg-[url('/public/HomeBg.webp')]">
+        <div className="min-h-screen bg-[url('/HomeBg.webp')]">
             <Container>
                 <div className="w-full flex justify-center mb-4 relative p-2 text-black">
                     {/* {console.log("Featured Image ID being used:", post.featuredImg)}

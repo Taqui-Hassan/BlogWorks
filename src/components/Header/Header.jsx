@@ -22,7 +22,7 @@ function Header() {
   
 
   return (
-    <header className="py-3 shadow bg-[url('/public/bgHome.webp')] ">
+    <header className="py-3 shadow bg-[url('/bgHome.webp')] ">
       <Container>
         <nav className="flex items-center justify-center">
           {/* <div className='mr-7'>
