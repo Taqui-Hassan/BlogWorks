@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.log
+dist/
+public/temp/*
+!public/temp/.gitkeep

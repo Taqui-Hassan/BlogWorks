@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Environment files - NEVER commit these
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploaded temp files
+public/temp/*
+!public/temp/.gitkeep
+
+# Vite cache
+.vite/

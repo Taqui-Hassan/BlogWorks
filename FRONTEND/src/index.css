@@ -1,0 +1,168 @@
+
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-ui: "DM Sans", sans-serif;
+
+  --color-ink:       #1a1a18;
+  --color-ink-light: #4a4a45;
+  --color-ink-muted: #8a8a82;
+  --color-paper:     #faf9f6;
+  --color-paper-warm: #f4f1ea;
+  --color-rule:      #d4cfc4;
+  --color-accent:    #c8392b;
+  --color-accent-gold: #b8960c;
+
+  /* keep old names working for any leftover usage */
+  --color-loginColor:  #f4f1ea;
+  --color-textColor:   #4a4a45;
+  --color-colorOrange: #c8392b;
+  --color-colorBlue:   #1a1a18;
+  --color-news:        #faf9f6;
+  --color-postnews:    #f4f1ea;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #faf9f6;
+  color: #1a1a18;
+  font-family: "Lora", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.2;
+  color: #1a1a18;
+}
+
+
+.rule-top    { border-top: 3px double #1a1a18; }
+.rule-bottom { border-bottom: 1px solid #d4cfc4; }
+.rule-thick  { border-top: 4px solid #1a1a18; }
+
+
+.masonry-grid {
+  columns: 1;
+  column-gap: 1.5rem;
+}
+@media (min-width: 640px)  { .masonry-grid { columns: 2; } }
+@media (min-width: 1024px) { .masonry-grid { columns: 3; } }
+@media (min-width: 1280px) { .masonry-grid { columns: 4; } }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ── Post card ── */
+.post-card {
+  background: #ffffff;
+  border: 1px solid #d4cfc4;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(26,26,24,0.10);
+}
+
+
+.prose-content {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #1a1a18;
+  max-width: 68ch;
+  margin: 0 auto;
+}
+.prose-content p  { margin-bottom: 1.4em; }
+.prose-content h2 { font-size: 1.5rem; margin: 2em 0 0.6em; }
+.prose-content h3 { font-size: 1.2rem; margin: 1.6em 0 0.5em; }
+.prose-content blockquote {
+  border-left: 3px solid #c8392b;
+  padding-left: 1.2rem;
+  font-style: italic;
+  color: #4a4a45;
+  margin: 1.6em 0;
+}
+
+
+.btn-primary {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #1a1a18;
+  color: #faf9f6;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid #1a1a18;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-primary:hover { background: #c8392b; border-color: #c8392b; }
+
+.btn-outline {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #1a1a18;
+  padding: 0.5rem 1.4rem;
+  border: 1px solid #1a1a18;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-outline:hover { background: #1a1a18; color: #faf9f6; }
+
+
+.editorial-input {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  border: none;
+  border-bottom: 1.5px solid #d4cfc4;
+  background: transparent;
+  padding: 0.5rem 0;
+  width: 100%;
+  color: #1a1a18;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.editorial-input:focus { border-color: #1a1a18; }
+.editorial-input::placeholder { color: #8a8a82; letter-spacing: 0.05em; font-size: 0.8rem; text-transform: uppercase; }
+
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  display: inline-block;
+  width: 3rem;
+  height: 1px;
+  background: #d4cfc4;
+  vertical-align: middle;
+  margin: 0 0.75rem;
+}
+
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.45s ease forwards; }
+
