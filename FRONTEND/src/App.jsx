@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom'
 import './index.css'
 import { Toaster } from 'sonner'
 import { getCurrentUser } from './api/user'
+import { toast } from 'sonner'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -15,11 +16,15 @@ function App() {
   useEffect(() => {
     let mounted = true
     async function initAuth() {
-
       const toastId = toast.loading("Connecting to server… (first load may take ~30 sec)")
       try {
-        const res = await getCurrentUser()
-
+        const res = await Promise.race([
+          getCurrentUser(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 30000))
+        ])
+        const userData = res?.data?.user || res?.data || res
+        if (userData?._id && mounted) dispatch(login(userData))
+        else if (mounted) dispatch(logout())
       } catch {
         if (mounted) dispatch(logout())
       } finally {
