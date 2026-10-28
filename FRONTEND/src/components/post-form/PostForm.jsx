@@ -7,6 +7,19 @@ import { toast } from "sonner"
 
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY
 
+const plainRule = "Output plain text only. Never use markdown: no asterisks, no pound signs, no backticks, no bullet symbols, no bold or italics. For headings, write the heading on its own line in normal text. For lists, use '1.' numbering only when a list is requested."
+
+const stripMarkdown = (text) =>
+  text
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/__(.*?)__/g, "$1")
+    .replace(/\*([^*\n]+)\*/g, "$1")
+    .replace(/`{1,3}([^`]*)`{1,3}/g, "$1")
+    .replace(/^\s*[-*•]\s+/gm, "")
+    .replace(/^>\s?/gm, "")
+    .trim()
+
 export default function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
@@ -23,6 +36,8 @@ export default function PostForm({ post }) {
   const abortRef = useRef(null)
   const navigate = useNavigate()
   const [imagePreview, setImagePreview] = useState(post?.FeaturedImg || null)
+
+  const cleanResult = stripMarkdown(aiResult)
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string")
@@ -79,12 +94,12 @@ export default function PostForm({ post }) {
     setAiLoading(true)
 
     const prompts = {
-      improve: `You are an expert editor for a literary blog. Improve the writing below — make it more engaging, fix grammar, improve flow and word choice. Keep the author's voice. Return only the improved text, no commentary.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
-      summarize: `Summarize the following blog post in 2-3 punchy sentences that would work as a subtitle or preview blurb. Return only the summary, no intro.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
-      title: `Suggest 5 compelling, click-worthy titles for a blog post with this content. Make them specific and varied in style. Return a numbered list only.\n\nCurrent title: ${title || "(none)"}\n\nContent:\n${plainText}`,
-      outline: `Based on this blog post draft, suggest an improved structure with section headings and one-line descriptions. Return as a clean numbered outline only.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
-      draft: `You are a skilled blog writer. Write a complete, well-structured blog post for the following title. Make it engaging, informative, and around 300-400 words. Use proper paragraphs. Return only the blog post content, no meta commentary.I'll copy and paste and the content so try not to use **..** for headings and all\n\nTitle: ${title}`,
-      creative: `Suggest 5 compelling, click-worthy trendy subjects for a blog post with this content. Make them specific and varied in style. Return a numbered list only.`
+      improve: `Improve the writing below. Make it more engaging, fix grammar, and improve flow and word choice. Keep the author's voice and meaning. Return only the improved text.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
+      summarize: `Summarize this blog post in 2-3 punchy sentences suitable as a subtitle or preview blurb. Return only the summary.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
+      title: `Suggest 5 specific, click-worthy titles in varied styles for this blog post. Return a numbered list, one title per line, nothing else.\n\nCurrent title: ${title || "(none)"}\n\nContent:\n${plainText}`,
+      outline: `Suggest an improved structure for this draft. Return a numbered outline where each line is a section heading followed by a dash and a one-line description. Nothing else.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
+      draft: `Write a complete blog post of 300-400 words for the title below. Use short paragraphs separated by blank lines. For section headings, write them as plain lines on their own. Return only the post.\n\nTitle: ${title}`,
+      creative: `Suggest 5 trendy, specific blog post subjects in varied styles${plainText ? " related to this content" : ""}. Return a numbered list, one per line, nothing else.${plainText ? `\n\nContent:\n${plainText}` : ""}`
     }
 
     try {
@@ -99,9 +114,13 @@ export default function PostForm({ post }) {
         signal: abortRef.current.signal,
         body: JSON.stringify({
           model: "openai/gpt-oss-120b",
-          max_tokens: 1024,
+          max_tokens: 2048,
+          reasoning_effort: "low",
           stream: true,
-          messages: [{ role: "user", content: prompts[mode] }],
+          messages: [
+            { role: "system", content: `You are a writing assistant for a literary blog. ${plainRule}` },
+            { role: "user", content: prompts[mode] },
+          ],
         }),
       })
 
@@ -148,7 +167,7 @@ export default function PostForm({ post }) {
   const stopAI = () => { abortRef.current?.abort(); setAiLoading(false) }
 
   const applyImproved = () => {
-    setValue("Content", `<p>${aiResult.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p>`)
+    setValue("Content", `<p>${cleanResult.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br/>")}</p>`)
     toast.success("Content updated!")
     setAiPanel(false)
   }
@@ -310,7 +329,7 @@ export default function PostForm({ post }) {
                   </div>
                 )}
                 <div style={{ fontFamily: aiMode === 'improve' ? '"Lora", serif' : '"DM Sans", sans-serif', fontSize: '0.875rem', lineHeight: 1.75, color: '#1a1a18', whiteSpace: 'pre-wrap' }}>
-                  {aiResult}
+                  {cleanResult}
                   {aiLoading && aiResult && (
                     <span style={{ display: 'inline-block', width: '2px', height: '1em', background: '#c8392b', marginLeft: '2px', verticalAlign: 'text-bottom', animation: 'blink 0.8s infinite' }} />
                   )}
@@ -327,7 +346,7 @@ export default function PostForm({ post }) {
                   <button onClick={() => runAI(aiMode)} style={{ ...aiBtnStyle(), fontSize: '0.72rem', padding: '0.4rem 1rem' }}>
                     Try again
                   </button>
-                  <button onClick={() => { navigator.clipboard.writeText(aiResult); toast.success("Copied!") }}
+                  <button onClick={() => { navigator.clipboard.writeText(cleanResult); toast.success("Copied!") }}
                     style={{ ...aiBtnStyle('#8a8a82'), fontSize: '0.72rem', padding: '0.4rem 1rem' }}>
                     Copy
                   </button>
