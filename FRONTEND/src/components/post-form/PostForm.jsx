@@ -83,7 +83,7 @@ export default function PostForm({ post }) {
       summarize: `Summarize the following blog post in 2-3 punchy sentences that would work as a subtitle or preview blurb. Return only the summary, no intro.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
       title: `Suggest 5 compelling, click-worthy titles for a blog post with this content. Make them specific and varied in style. Return a numbered list only.\n\nCurrent title: ${title || "(none)"}\n\nContent:\n${plainText}`,
       outline: `Based on this blog post draft, suggest an improved structure with section headings and one-line descriptions. Return as a clean numbered outline only.\n\nTitle: ${title}\n\nContent:\n${plainText}`,
-      draft: `You are a skilled blog writer. Write a complete, well-structured blog post for the following title. Make it engaging, informative, and around 300-400 words. Use proper paragraphs. Return only the blog post content, no meta commentary.\n\nTitle: ${title}`,
+      draft: `You are a skilled blog writer. Write a complete, well-structured blog post for the following title. Make it engaging, informative, and around 300-400 words. Use proper paragraphs. Return only the blog post content, no meta commentary.I'll copy and paste and the content so try not to use **..** for headings and all\n\nTitle: ${title}`,
       creative: `Suggest 5 compelling, click-worthy trendy subjects for a blog post with this content. Make them specific and varied in style. Return a numbered list only.`
     }
 
